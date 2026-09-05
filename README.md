@@ -1,51 +1,35 @@
 # SKILES 🚀
 
-> **One-Command Favorite AI Skills Manager & Automated Installer**
+> **One-Word Command AI Skills Manager & Automated Installer**
 
-Maintain your favorite AI agent skills in one central GitHub repository and install only the specific skills you need into any project with a single command.
+Type just **`skills`** in any project folder to install your favorite skills automatically.
 
 ---
 
-## ⚡ Quick 1-Command Shortcuts
-
-You can run these commands from **any terminal or directory**:
+## ⚡ Instant Commands (Run from ANY folder)
 
 | Command | What It Does |
 |---|---|
-| `my-skills` | Installs all your favorite skills into the current project |
-| `add-skill <repo> [skill]` | Adds a new skill to your list, pushes to GitHub & installs it instantly! |
-| `my-skills list` | Shows your current favorite skills list in terminal |
-| `my-skills edit` | Opens `skills.txt` in Notepad and auto-syncs to GitHub when closed |
+| **`skills`** | **Installs all your favorite skills into the current project** |
+| `add-skill <repo> [skill]` | Adds a new skill to your list, pushes to GitHub & installs it instantly |
+| `skills list` | Shows your current favorite skills list in terminal |
+| `skills edit` | Opens `skills.txt` in Notepad and auto-syncs to GitHub when closed |
+
+*(Note: `my-skills` also continues to work as an alias).*
 
 ---
 
-## ➕ Super-Easy: How to Add Skills in the Future
+## 💻 How to Use It in Any New Project
 
-No manual file opening, no git commands needed! Just type:
-
-```cmd
-add-skill <repo-url> [skill-name]
-```
-
-### Examples:
-
-1. **Add a specific skill**:
+1. Open CMD or PowerShell:
    ```cmd
-   add-skill https://github.com/anthropics/skills webapp-testing
+   cd D:\Projects\MyNewProject
    ```
-2. **Add all skills from a repository**:
+2. Run:
    ```cmd
-   add-skill vercel-labs/agent-skills
+   skills
    ```
-3. **Interactive mode (asks you what to add)**:
-   ```cmd
-   add-skill
-   ```
-
-**What happens automatically:**
-1. It adds the line to `skills.txt`.
-2. It automatically commits and pushes to GitHub.
-3. It immediately installs the new skill into your current project!
+3. Done! Both `ui-ux-pro-max` and `frontend-design` are physically copied into `.agents/skills/`.
 
 ---
 
@@ -61,20 +45,17 @@ Installed into:
 
 ---
 
-## 💻 Everyday Usage
-
-Navigate into any project directory and run:
+## ➕ How to Add Skills in the Future
 
 ```cmd
-my-skills
+add-skill <repo-url> [skill-name]
 ```
 
-### Install for Claude Code specifically (`.claude/skills/`):
+Example:
 ```cmd
-my-skills --agent claude-code
+add-skill https://github.com/anthropics/skills webapp-testing
 ```
-
-### Install Globally:
-```cmd
-my-skills -g
-```
+This automatically:
+1. Adds it to `skills.txt`
+2. Syncs and pushes to GitHub
+3. Installs it into your current project!
