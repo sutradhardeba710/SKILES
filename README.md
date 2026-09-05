@@ -1,4 +1,4 @@
-﻿# SKILES 🚀
+# SKILES 🚀
 
 > **One-Command Favorite AI Skills Manager & Automated Installer**
 
@@ -16,12 +16,19 @@ New Project ➔ Open Terminal ➔ my-skills ➔ All Favorite Skills Installed! �
 
 ---
 
-## 📦 Configured Skills
+## 📦 Pre-configured Favorite Skills
 
-Currently included in [`skills.txt`](./skills.txt):
+Configured in [`skills.txt`](./skills.txt):
 
-1. **`ui-ux-pro-max`** — UI/UX design intelligence for web, mobile, and desktop (from [`nextlevelbuilder/ui-ux-pro-max-skill`](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)).
-2. **`frontend-design`** — Comprehensive frontend design skill (from [`anthropics/skills`](https://github.com/anthropics/skills)).
+1. **`ui-ux-pro-max` (Full Suite - 7 Skills)**:
+   - `ui-ux-pro-max` — UI/UX design intelligence (searchable styles, product palettes, font pairings, 119 UX guidelines)
+   - `ui-styling` — Radix UI, Tailwind CSS, shadcn/ui styling
+   - `design` — Brand identity, tokens, logo generation, CIP mockups
+   - `design-system` — Token architecture, component specs
+   - `slides` — HTML presentations with Chart.js
+   - `brand` — Brand voice, visual identity & guidelines
+   - `banner-design` — Multi-platform banner & ad design
+2. **`frontend-design`** — Anthropic frontend design system for intentional, polished visual UI.
 
 ---
 
@@ -50,51 +57,51 @@ Run this command in PowerShell from this directory:
 
 Navigate into any project directory and run:
 
-### Windows CMD
+### Universal Install (Copies to Detected Agents & `.agents/skills`)
 ```cmd
 my-skills
 ```
 
-### Windows PowerShell
-```powershell
-my-skills
-# or
-my-skills.ps1
+### Install Specifically for Claude Code (`.claude/skills`)
+```cmd
+my-skills --agent claude-code
 ```
 
-### Target Specific Agents or Global Scope
-You can pass any regular `skills` CLI flags directly through:
+### Install for Multiple Agents (e.g. Claude Code & Cursor)
+```cmd
+my-skills --agent claude-code cursor
+```
 
-```bash
-# Install only for Claude Code
-my-skills --agent claude-code
-
-# Install only for Antigravity / Cursor
-my-skills --agent antigravity
-
-# Install globally to user profile instead of project-level
+### Install Globally to User Profile
+```cmd
 my-skills -g
 ```
 
 ---
 
+## 🔧 Key Features & Fixes Included
+
+- **Full Physical Copy (`--copy`)**: Automatically enabled by default. Copies the actual, full original files (scripts, python tools, design databases, CSVs) directly into your project's agent directories instead of failing symlinks on Windows.
+- **BOM-Safe Parsing**: Robust against UTF-8 Byte Order Marks and ignores comment lines starting with `#`.
+- **Argument Passthrough**: Accepts any CLI flags (`--agent`, `-g`, etc.) and forwards them directly to the `skills` CLI.
+
+---
+
 ## ➕ Adding More Skills
 
-To add more skills, simply open [`skills.txt`](./skills.txt) and add the repository URL or shorthand:
+To add more skills, simply edit [`skills.txt`](./skills.txt):
 
 ```text
-# Example whole repository
-vercel-labs/agent-skills
+# Install all skills from a repository
+https://github.com/nextlevelbuilder/ui-ux-pro-max-skill --skill *
 
-# Example specific skill from a repository
+# Install one specific skill from a repository
 https://github.com/anthropics/skills --skill frontend-design
 ```
 
-Save the file and push to GitHub:
+Then commit and push:
 ```bash
-git add skills.txt
-git commit -m "add new favorite skill"
+git add .
+git commit -m "update skills"
 git push
 ```
-
-Every project you run `my-skills` in will now automatically receive the new skills!

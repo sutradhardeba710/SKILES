@@ -6,6 +6,7 @@ echo ==========================================
 echo        AI SKILLS INSTALLER (SKILES)
 echo ==========================================
 echo Working Directory: %CD%
+echo Mode: Full physical copy (--copy enabled)
 echo.
 
 set "SKILLS_FILE=%~dp0skills.txt"
@@ -15,17 +16,12 @@ if not exist "%SKILLS_FILE%" (
     exit /b 1
 )
 
-for /f "usebackq tokens=*" %%A in ("%SKILLS_FILE%") do (
+for /f "usebackq eol=# tokens=*" %%A in ("%SKILLS_FILE%") do (
     set "line=%%A"
-    set "first_char=!line:~0,1!"
     if not "!line!"=="" (
-        if not "!first_char!"=="#" (
-            if not "!first_char!"==";" (
-                echo.
-                echo [INSTALLING] !line! %*
-                call npx --yes skills add !line! %* -y
-            )
-        )
+        echo.
+        echo [INSTALLING] !line! %*
+        call npx --yes skills add !line! --copy %* -y
     )
 )
 

@@ -1,4 +1,4 @@
-﻿[CmdletBinding()]
+[CmdletBinding()]
 param(
     [Parameter(ValueFromRemainingArguments = $true)]
     [string[]]$ExtraArgs
@@ -10,7 +10,8 @@ $skillsFile = Join-Path $scriptDir "skills.txt"
 Write-Host "`n==========================================" -ForegroundColor Cyan
 Write-Host "       AI SKILLS INSTALLER (SKILES)" -ForegroundColor Cyan
 Write-Host "==========================================" -ForegroundColor Cyan
-Write-Host "Working Directory: $(Get-Location)`n" -ForegroundColor Gray
+Write-Host "Working Directory: $(Get-Location)" -ForegroundColor Gray
+Write-Host "Mode: Full physical copy (--copy enabled)`n" -ForegroundColor Gray
 
 if (-not (Test-Path $skillsFile)) {
     Write-Error "skills.txt not found at: $skillsFile"
@@ -25,7 +26,7 @@ $lines = Get-Content $skillsFile | Where-Object {
 foreach ($line in $lines) {
     Write-Host "[INSTALLING] $line $ExtraArgs" -ForegroundColor Green
     $cmdParts = $line -split "\s+"
-    $argsList = @("--yes", "skills", "add") + $cmdParts + $ExtraArgs + @("-y")
+    $argsList = @("--yes", "skills", "add") + $cmdParts + @("--copy") + $ExtraArgs + @("-y")
     & npx.cmd @argsList
 }
 

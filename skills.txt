@@ -1,11 +1,11 @@
-﻿# ==========================================
+# ==========================================
 # FAVORITE AI SKILLS LIST (SKILES)
 # ==========================================
-# Format: <repo-url-or-shorthand> [optional flags like --skill <name>]
-# Lines starting with '#' or ';' are comments.
+# Use --skill * to install ALL skills from a repository
+# Or use --skill <name> to install a specific skill
 
-# UI/UX Pro Max design intelligence skill
-https://github.com/nextlevelbuilder/ui-ux-pro-max-skill --skill ui-ux-pro-max
+# UI-UX Pro Max (All 7 design skills: ui-ux-pro-max, ui-styling, design, design-system, slides, brand, banner-design)
+https://github.com/nextlevelbuilder/ui-ux-pro-max-skill --skill *
 
 # Anthropic Frontend Design skill
 https://github.com/anthropics/skills --skill frontend-design
