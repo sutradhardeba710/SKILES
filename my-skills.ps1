@@ -11,12 +11,20 @@ Write-Host "`n==========================================" -ForegroundColor Cyan
 Write-Host "       AI SKILLS INSTALLER (SKILES)" -ForegroundColor Cyan
 Write-Host "==========================================" -ForegroundColor Cyan
 Write-Host "Working Directory: $(Get-Location)" -ForegroundColor Gray
-Write-Host "Mode: Full physical copy (--copy enabled)`n" -ForegroundColor Gray
 
 if (-not (Test-Path $skillsFile)) {
     Write-Error "skills.txt not found at: $skillsFile"
     exit 1
 }
+
+$hasAgentArg = ($ExtraArgs -join " ") -match "(--agent|-a)\b"
+$defaultAgentArgs = @()
+if (-not $hasAgentArg) {
+    $defaultAgentArgs = @("--agent", "antigravity")
+    Write-Host "Target Folder: .agents\skills\ (Universal)" -ForegroundColor Gray
+}
+
+Write-Host "Mode: Full physical copy (--copy)`n" -ForegroundColor Gray
 
 $lines = Get-Content $skillsFile | Where-Object {
     $trimmed = $_.Trim()
@@ -26,7 +34,7 @@ $lines = Get-Content $skillsFile | Where-Object {
 foreach ($line in $lines) {
     Write-Host "[INSTALLING] $line $ExtraArgs" -ForegroundColor Green
     $cmdParts = $line -split "\s+"
-    $argsList = @("--yes", "skills", "add") + $cmdParts + @("--copy") + $ExtraArgs + @("-y")
+    $argsList = @("--yes", "skills", "add") + $cmdParts + $defaultAgentArgs + @("--copy") + $ExtraArgs + @("-y")
     & npx.cmd @argsList
 }
 
