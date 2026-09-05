@@ -1,0 +1,11 @@
+﻿# ==========================================
+# FAVORITE AI SKILLS LIST (SKILES)
+# ==========================================
+# Format: <repo-url-or-shorthand> [optional flags like --skill <name>]
+# Lines starting with '#' or ';' are comments.
+
+# UI/UX Pro Max design intelligence skill
+https://github.com/nextlevelbuilder/ui-ux-pro-max-skill --skill ui-ux-pro-max
+
+# Anthropic Frontend Design skill
+https://github.com/anthropics/skills --skill frontend-design
