@@ -233,14 +233,10 @@ if (Test-Path $skillsFile) {
     }
 
     foreach ($line in $lines) {
-        if ($line -match "sutradhardeba710/SKILES\s+--skill\s+videoprompt") {
-            Install-VideoSkillsSuite -TargetDir (Get-Location).Path
-        } else {
-            Write-Host "[INSTALLING] $line $allPassed" -ForegroundColor Green
-            $cmdParts = $line -split "\s+"
-            $argsList = @("--yes", "skills", "add") + $cmdParts + $defaultAgentArgs + @("--copy") + $allPassed + @("-y")
-            & npx.cmd @argsList
-        }
+        Write-Host "[INSTALLING] $line $allPassed" -ForegroundColor Green
+        $cmdParts = $line -split "\s+"
+        $argsList = @("--yes", "skills", "add") + $cmdParts + $defaultAgentArgs + @("--copy") + $allPassed + @("-y")
+        & npx.cmd @argsList
     }
 }
 

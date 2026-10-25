@@ -8,5 +8,3 @@ https://github.com/nextlevelbuilder/ui-ux-pro-max-skill --skill ui-ux-pro-max
 # Frontend Design skill only
 https://github.com/anthropics/skills --skill frontend-design
 
-# Master Video Prompt & Cinematic AI Director Suite (1-Click)
-https://github.com/sutradhardeba710/SKILES --skill videoprompt
